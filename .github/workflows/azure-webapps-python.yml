@@ -62,7 +62,7 @@ jobs:
         run: |
           zip -r python-app.zip . -x "ven v/*" |
           ls -la |
-          pwd
+          pwd |
           
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
