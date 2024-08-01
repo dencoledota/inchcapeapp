@@ -33,16 +33,14 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r requirements.txt
-
-      - name: Package Application files
-        run: |
-          zip -r python-app.zip . -x "venv/*"
           
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v3
         with:
           name: python-app
-          path: python-app.zip
+          path: |
+            .
+            !venv/
 
   deploy:
     runs-on: ubuntu-latest
@@ -69,4 +67,4 @@ jobs:
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: /home/runner/work/inchcapeapp/inchcapeapp/python-app/
+          package: .
