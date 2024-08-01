@@ -16,6 +16,7 @@ def get_posts():
         return jsonify(posts)
     except requests.exceptions.RequestException as e:
         return jsonify({"error": "Unable to fetch posts"}), 500
+    #test
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
